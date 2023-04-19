@@ -30,8 +30,12 @@ const createAndSavePerson = (done) => {
   });
 };
 
+// Challenge 4
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, (err, data) => {
+    if (err) return done(err);
+    done(null, data);
+  });
 };
 
 const findPeopleByName = (personName, done) => {
