@@ -54,8 +54,12 @@ const findOneByFood = (food, done) => {
   });
 };
 
+// Challenge 7
 const findPersonById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findById(personId, (err, data) => {
+    if (err) return done(err);
+    done(null, data);
+  });
 };
 
 const findEditThenSave = (personId, done) => {
