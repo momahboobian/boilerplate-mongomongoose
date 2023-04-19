@@ -91,8 +91,12 @@ const findAndUpdate = (personName, done) => {
   );
 };
 
+// Challenge 10
 const removeById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findByIdAndRemove(personId, (err, removePerson) => {
+    if (err) return console.log(err);
+    done(null, removePerson);
+  });
 };
 
 const removeManyPeople = (done) => {
