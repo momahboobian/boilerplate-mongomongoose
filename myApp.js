@@ -6,6 +6,7 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
 });
 
+// Challenge 2 = Create a 'Person' Mode
 const Schema = mongoose.Schema;
 
 const personSchema = new Schema({
@@ -16,9 +17,17 @@ const personSchema = new Schema({
 
 const Person = mongoose.model("Person", personSchema);
 
+// Challenge 3
 const createAndSavePerson = (done) => {
-  const 
-  done(null, data);
+  const person = new Person({
+    name: "John",
+    age: 30,
+    favoriteFoods: ["Pizza", "Burger"],
+  });
+  person.save((err, data) => {
+    if (err) return done(err);
+    done(null, data);
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
