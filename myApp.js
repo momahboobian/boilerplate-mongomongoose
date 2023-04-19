@@ -38,8 +38,12 @@ const createManyPeople = (arrayOfPeople, done) => {
   });
 };
 
+// Challenge 5
 const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+  Person.find({ name: personName }, (err, data) => {
+    if (err) return done(err);
+    done(null, data);
+  });
 };
 
 const findOneByFood = (food, done) => {
